@@ -26,17 +26,6 @@ function kubectl {
 EOF
 source ~/.bash_aliases
 
-echo "# k9s..."
-VERSION='0.24.2':w
-
-curl -OL https://github.com/derailed/k9s/releases/download/v${VERSION}/k9s_Linux_x86_64.tar.gz
-mkdir -p tmp/
-tar -C tmp/ -xvf k9s_Linux_x86_64.tar.gz
-rm k9s_Linux_x86_64.tar.gz
-sudo mv -f tmp/k9s /usr/local/bin
-rm -rf tmp/
-mkdir -p $HOME/.k9s/
-
 echo "# lazygit..."
 sudo add-apt-repository --yes ppa:lazygit-team/release
 sudo apt-get update
