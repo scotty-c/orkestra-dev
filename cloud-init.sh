@@ -47,10 +47,10 @@ curl -L -o kubebuilder https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go e
 chmod +x kubebuilder && mv kubebuilder /usr/local/bin/
 
 
-echo "#controller-gen..."
+echo "# controller-gen..."
 GO111MODULE=on go get -v -u sigs.k8s.io/controller-tools/cmd/controller-gen@v0.5.0
 
-echo "#orkestra..."
+echo "# orkestra..."
 helm install orkestra chart/orkestra/  --namespace orkestra --create-namespace
 
 echo "# complete!"
