@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -ex pipefail
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -51,6 +51,7 @@ echo "# controller-gen..."
 GO111MODULE=on go get -v -u sigs.k8s.io/controller-tools/cmd/controller-gen@v0.5.0
 
 echo "# orkestra..."
-helm install orkestra chart/orkestra/  --namespace orkestra --create-namespace
+git clone https://github.com/Azure/orkestra.git
+cd orkestra &&  install orkestra chart/orkestra/  --namespace orkestra --create-namespace
 
 echo "# complete!"
