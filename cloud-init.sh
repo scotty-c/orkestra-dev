@@ -42,6 +42,8 @@ rm go$VERSION.$OS-$ARCH.tar.gz
 tee -a ~/.profile <<'EOF'
 PATH=$PATH:/usr/local/go/bin
 EOF
+mkdir $HOME/go
+sudo chown -f -R $USER $HOME/go
 source ~/.profile
 
 echo "# kubebuilder..."
