@@ -32,7 +32,7 @@ sudo apt-get update
 sudo apt-get install -y lazygit
 
 echo "# golang..."
-VERSION='1.16'
+VERSION='1.15.11'
 OS='linux'
 ARCH='amd64'
 
