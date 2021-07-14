@@ -54,6 +54,6 @@ sudo chown -f -R $USER $HOME/go
 
 echo "# orkestra..."
 git clone https://github.com/Azure/orkestra.git
-cd orkestra &&  install orkestra chart/orkestra/  --namespace orkestra --create-namespace
+cd orkestra && helm install orkestra chart/orkestra/  --namespace orkestra --create-namespace
 
 echo "# complete!"
