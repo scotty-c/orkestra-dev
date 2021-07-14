@@ -39,11 +39,6 @@ ARCH='amd64'
 curl -OL https://dl.google.com/go/go${VERSION}.${OS}-${ARCH}.tar.gz
 sudo tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz
 rm go$VERSION.$OS-$ARCH.tar.gz
-cat >> /etc/profile.d/go.sh << \EOF
-  PATH=$PATH://usr/local/go/bin
-EOF
-
-
 
 echo "# kubebuilder..."
 curl -L -o kubebuilder https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go env GOARCH)
@@ -51,7 +46,7 @@ chmod +x kubebuilder && mv kubebuilder /usr/local/bin/
 
 
 echo "# controller-gen..."
-GO111MODULE=on go get -v -u sigs.k8s.io/controller-tools/cmd/controller-gen@v0.5.0
+GO111MODULE=on /usr/local/go/bin/go get -v -u sigs.k8s.io/controller-tools/cmd/controller-gen@v0.5.0
 
 echo "# orkestra..."
 git clone https://github.com/Azure/orkestra.git
