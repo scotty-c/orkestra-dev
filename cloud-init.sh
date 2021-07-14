@@ -42,8 +42,6 @@ rm go$VERSION.$OS-$ARCH.tar.gz
 tee -a ~/.profile <<'EOF'
 PATH=$PATH:/usr/local/go/bin
 EOF
-mkdir $HOME/go
-sudo chown -f -R $USER $HOME/go
 source ~/.profile
 
 echo "# kubebuilder..."
@@ -53,6 +51,7 @@ chmod +x kubebuilder && mv kubebuilder /usr/local/bin/
 
 echo "# controller-gen..."
 GO111MODULE=on go get -v -u sigs.k8s.io/controller-tools/cmd/controller-gen@v0.5.0
+sudo chown -f -R $USER $HOME/go
 
 echo "# orkestra..."
 git clone https://github.com/Azure/orkestra.git
