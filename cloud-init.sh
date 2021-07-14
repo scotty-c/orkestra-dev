@@ -16,7 +16,7 @@ sudo microk8s config > $HOME/.kube/config
 sudo microk8s enable helm3
 
 tee -a ~/.bash_aliases <<'EOF'
-function helm {
+function helm3 {
         sudo microk8s helm3 "$@"
 }
 
@@ -54,6 +54,6 @@ sudo chown -f -R $USER $HOME/go
 
 echo "# orkestra..."
 git clone https://github.com/Azure/orkestra.git
-cd orkestra && helm install orkestra chart/orkestra/  --namespace orkestra --create-namespace
+cd orkestra && helm3 install orkestra chart/orkestra/  --namespace orkestra --create-namespace
 
 echo "# complete!"
