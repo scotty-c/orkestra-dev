@@ -13,19 +13,17 @@ mkdir -p $HOME/.kube/
 sudo usermod -a -G microk8s $USER
 sudo chown -f -R $USER ~/.kube
 sudo microk8s config > $HOME/.kube/config
-sudo microk8s enable helm3
 
 tee -a ~/.bash_aliases <<'EOF'
-function helm3 {
-        sudo microk8s helm3 "$@"
-}
-
 function kubectl {
         sudo microk8s kubectl "$@"
 }
 PATH="$PATH:/usr/local/go/bin:'$HOME'/go/bin"
 EOF
 source ~/.bash_aliases
+
+echo " # Helm..."
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
 echo "# lazygit..."
 sudo add-apt-repository --yes ppa:lazygit-team/release
@@ -54,6 +52,6 @@ sudo chown -f -R $USER $HOME/go
 
 echo "# orkestra..."
 git clone https://github.com/Azure/orkestra.git
-cd orkestra && helm3 install orkestra chart/orkestra/  --namespace orkestra --create-namespace
+cd orkestra && helm3 install orkestra chart/orkestra/ --namespace orkestra --create-namespace
 
 echo "# complete!"
