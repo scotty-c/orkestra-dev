@@ -18,9 +18,11 @@ tee -a ~/.bash_aliases <<'EOF'
 function kubectl {
         sudo microk8s kubectl "$@"
 }
-export PATH="$PATH:/usr/local/go/bin:'$HOME'/go/bin"
+export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
 EOF
 source ~/.bash_aliases
+
+echo "export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.profile 
 
 echo " # Helm..."
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
