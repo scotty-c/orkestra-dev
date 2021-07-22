@@ -45,9 +45,7 @@ chmod +x kubebuilder && mv kubebuilder /usr/local/bin/
 
 
 echo "# controller-gen..."
-{
 GO111MODULE=on go get -v -u sigs.k8s.io/controller-tools/cmd/controller-gen@v0.5.0
-} || true
 sudo chown -f -R $USER $HOME/go
 
 echo "# orkestra..."
