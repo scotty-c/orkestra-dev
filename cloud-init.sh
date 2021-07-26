@@ -18,11 +18,9 @@ tee -a ~/.bash_aliases <<'EOF'
 function kubectl {
         sudo microk8s kubectl "$@"
 }
-export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
+PATH="$PATH:/usr/local/go/bin:'$HOME'/go/bin"
 EOF
 source ~/.bash_aliases
-
-echo "export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.profile 
 
 echo " # Helm..."
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
@@ -47,7 +45,9 @@ chmod +x kubebuilder && mv kubebuilder /usr/local/bin/
 
 
 echo "# controller-gen..."
-GO111MODULE=on go get -v -u sigs.k8s.io/controller-tools/cmd/controller-gen@v0.5.0
+go mod init tmp
+go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.5.0
+rm -rf tmp
 sudo chown -f -R $USER $HOME/go
 
 echo "# orkestra..."
