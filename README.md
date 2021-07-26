@@ -1,4 +1,4 @@
-# Cluster API Azure control plane.
+# Azure Orkestra.
 
 ## Introduction
 The idea behind this repo was to make it super easy to spin up a [Azure Orkestra](https://github.com/Azure/orkestra).  
