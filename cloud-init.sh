@@ -13,22 +13,19 @@ mkdir -p $HOME/.kube/
 sudo usermod -a -G microk8s $USER
 sudo chown -f -R $USER ~/.kube
 sudo microk8s config > $HOME/.kube/config
+sudo microk8s enable dns
 
 tee -a ~/.bash_aliases <<'EOF'
 function kubectl {
         sudo microk8s kubectl "$@"
 }
 PATH="$PATH:/usr/local/go/bin:'$HOME'/go/bin"
+source <(kubectl completion bash)
 EOF
 source ~/.bash_aliases
 
 echo " # Helm..."
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-
-echo "# lazygit..."
-sudo add-apt-repository --yes ppa:lazygit-team/release
-sudo apt-get update
-sudo apt-get install -y lazygit
 
 echo "# golang..."
 VERSION='1.15.11'
@@ -52,8 +49,6 @@ sudo chown -f -R $USER $HOME/go
 
 echo "# orkestra..."
 git clone https://github.com/Azure/orkestra.git
-cd orkestra
-kubectl apply -k ./config/crd
-helm install orkestra chart/orkestra/ --namespace orkestra --create-namespace
+cd orkestra && helm install orkestra chart/orkestra/ --namespace orkestra --create-namespace
 
 echo "# complete!"
