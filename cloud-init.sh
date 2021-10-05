@@ -29,7 +29,6 @@ echo " # Helm..."
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
 echo " # argo..."
-# Download the binary
 curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.2.0-rc5/argo-linux-amd64.gz
 gzip argo-linux-amd64.gz
 chmod +x argo-linux-amd64
